@@ -1,0 +1,14 @@
+.home {
+  display: flex;
+  justify-content: center;
+  font-family: 'Roboto' , sans-serif
+}
+
+.containerHome {
+  width: 100%;
+  max-width: 1024px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
