@@ -5,6 +5,11 @@ import jwt_decoded from "jwt-decode";
 export const api = axios.create({
   baseURL: process.env.API_URL || "http://localhost:7070/",
   withCredentials: true,
+  headers: {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "http://localhost:3000",
+    "Access-Control-Allow-Credentials": "true",
+  },
 });
 
 export const privateApi = axios.create({
@@ -12,6 +17,8 @@ export const privateApi = axios.create({
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "http://localhost:3000",
+    "Access-Control-Allow-Credentials": "true",
   },
 });
 

@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { logout, getUser } from '../reducers/auth.js';
 import { useDispatch, useSelector } from 'react-redux';
 import './navbar.css';
-
+import swal from 'sweetalert';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -18,7 +18,21 @@ const Navbar = () => {
   }, [uid, navigate])
   
   const handleLogout = async () => {
-    await dispatch(logout());
+    swal({
+      title: "Are you sure you want to Logout?",
+      // text: "Sekali delete, Data Anda tidak akan bisa kembali lagi!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+      })
+      .then(async (willDelete) => {
+        if (willDelete) {
+          await dispatch(logout());
+          swal("Logout Success!", 
+          {
+            icon: "success",});
+      } 
+      });
   }; 
   
   const handleProfil = async () => {

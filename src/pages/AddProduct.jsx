@@ -3,7 +3,7 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import { createProducts } from './../reducers/product';
 import { useDispatch } from 'react-redux';
-
+import swal from 'sweetalert';
 
 const AddProduct = () => {
   const dispatch = useDispatch();
@@ -14,8 +14,23 @@ const AddProduct = () => {
 
   const saveProduct = async(e) => {
     e.preventDefault();
+    if (!name || !price){
+      swal({
+      title: "Form must be filled!",
+      // text: "You clicked the button!",
+      icon: "warning",
+      button: "Ok",
+      });
+    }else {
     await dispatch(createProducts({name, price}));
+    await swal({
+      title: "Product Added Success!",
+      // text: "You clicked the button!",
+      icon: "success",
+      button: "OK",
+      });
     navigate("/")
+    }
       
   }
 

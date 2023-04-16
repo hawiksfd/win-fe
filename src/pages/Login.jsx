@@ -3,6 +3,8 @@ import './login.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { login } from "../reducers/auth.js";
+import swal from 'sweetalert';
+
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -14,7 +16,17 @@ const Login = () => {
   const handleLogin = async (e) => {
       e.preventDefault();
       await dispatch(login({email, password}))
+      await swal({
+        title: "Login Success!",
+        // text: "You clicked the button!",
+        icon: "success",
+        button: "OK",
+        });
       navigate('/');
+  }; 
+
+  const handleSignUp = async () => {
+    navigate('/register');
   };
   
   return (
@@ -39,6 +51,13 @@ const Login = () => {
           onClick={handleLogin}
         >
           Login
+        </button>
+        <span>Don't have an account?</span>
+        <button 
+          className="lButton"
+          onClick={handleSignUp}
+        >
+          Sign Up
         </button>
       </div>
     </div>

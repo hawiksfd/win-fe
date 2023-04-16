@@ -5,7 +5,7 @@ import Navbar from '../../components/Navbar';
 import './home.css';
 import { privateApi } from './../../services/setupInterceptor';
 import { getProducts, getProduct, deleteProduct } from '../../reducers/product.js';
-
+import swal from 'sweetalert';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -32,8 +32,22 @@ const Home = () => {
   }
 
   const handleDelete = async (id) => {
-    await dispatch(deleteProduct(id));
-    dispatch(getProducts());
+    swal({
+      title: "Are you sure you want to delete the product??",
+      // text: "Sekali delete, Data Anda tidak akan bisa kembali lagi!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+      })
+      .then(async (willDelete) => {
+        if (willDelete) {
+          await dispatch(deleteProduct(id));
+          swal("The product is permanently deleted!", 
+          {
+            icon: "success",});
+          await dispatch(getProducts());
+      } 
+      });
   }
 
   return (

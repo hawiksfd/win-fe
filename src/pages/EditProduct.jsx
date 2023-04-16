@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import {useNavigate, useParams} from "react-router-dom";
 import { getProduct, editProduct } from './../reducers/product';
-
+import swal from 'sweetalert';
 
 const EditProduct = () => {
   const navigate = useNavigate();
@@ -19,9 +19,15 @@ const EditProduct = () => {
   
 
   const UpdateProduct = async(e) => {
-      e.preventDefault();
-      await dispatch(editProduct({id, name, price}));
-      navigate("/")
+    e.preventDefault();
+    await dispatch(editProduct({id, name, price}));
+    await swal({
+      title: "Product Updated Success!",
+      // text: "You clicked the button!",
+      icon: "success",
+      button: "OK",
+      });
+    navigate("/")
   }
 
   return (

@@ -9,13 +9,13 @@ export const register = createAsyncThunk(
   "register",
   async ({ name, email, password, gender }) => {
     try {
-      var regis = await api.post("auth/register", {
+      var respRegis = await api.post("auth/register", {
         name,
         email,
         password,
         gender,
       });
-      // return regis.data;
+      return respRegis.data;
     } catch (error) {
       console.log(error);
     }
@@ -58,6 +58,7 @@ export const getUser = createAsyncThunk("USERS", async (id) => {
 const initialState = {
   user: [],
   uid: null,
+  msg: null,
   isAuthenticated: false,
   isLoading: false,
 };
