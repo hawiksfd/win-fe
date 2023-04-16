@@ -3,21 +3,23 @@ import { useSelector } from "react-redux";
 import jwt_decoded from "jwt-decode";
 
 export const api = axios.create({
-  baseURL: process.env.API_URL || "http://localhost:7070/",
+  baseURL: process.env.API_URL || "https://win-be-hawiksfd.cyclic.app/",
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "http://localhost:3000",
+    "Access-Control-Allow-Origin":
+      "https://win-fe-git-master-hawiksfd.vercel.app/",
     "Access-Control-Allow-Credentials": "true",
   },
 });
 
 export const privateApi = axios.create({
-  baseURL: process.env.API_URL || "http://localhost:7070/",
+  baseURL: process.env.API_URL || "https://win-be-hawiksfd.cyclic.app/",
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "http://localhost:3000",
+    "Access-Control-Allow-Origin":
+      "https://win-fe-git-master-hawiksfd.vercel.app/",
     "Access-Control-Allow-Credentials": "true",
   },
 });
