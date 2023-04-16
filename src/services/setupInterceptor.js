@@ -3,12 +3,12 @@ import { useSelector } from "react-redux";
 import jwt_decoded from "jwt-decode";
 
 export const api = axios.create({
-  baseURL: process.env.API_URL || "http://localhost:7070/api/",
+  baseURL: process.env.API_URL || "http://localhost:7070/",
   withCredentials: true,
 });
 
 export const privateApi = axios.create({
-  baseURL: process.env.API_URL || "http://localhost:7070/api/",
+  baseURL: process.env.API_URL || "http://localhost:7070/",
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
